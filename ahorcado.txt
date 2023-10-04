@@ -1,0 +1,95 @@
+Juego del ahorcado ALEJANDRO AREIZA ALZATE 1020302346
+using System;
+
+class Ahorcado
+{
+    static void Main()
+    {
+        string[] palabras = { "programacion", "computadora", "desarrollo", "openai", "inteligencia" };
+        string palabraSecreta = SeleccionarPalabraSecreta(palabras);
+        char[] letrasCorrectas = new char[palabraSecreta.Length];
+        int intentosRestantes = 6;
+        bool juegoTerminado = false;
+
+        Console.WriteLine("¡Bienvenido al Juego del Ahorcado!");
+        Console.WriteLine("Adivina la palabra secreta.");
+        MostrarPalabraOculta(letrasCorrectas);
+
+        while (!juegoTerminado)
+        {
+            Console.Write("\nIngresa una letra: ");
+            char letra = Console.ReadLine().ToLower()[0];
+
+            if (!Char.IsLetter(letra))
+            {
+                Console.WriteLine("Por favor, ingresa una letra válida.");
+                continue;
+            }
+
+            if (LetraYaAdivinada(letra, letrasCorrectas))
+            {
+                Console.WriteLine("Ya adivinaste esa letra. Intenta otra.");
+            }
+            else if (palabraSecreta.Contains(letra))
+            {
+                letrasCorrectas = ActualizarLetrasCorrectas(letra, palabraSecreta, letrasCorrectas);
+                Console.WriteLine("¡Correcto!");
+                MostrarPalabraOculta(letrasCorrectas);
+                if (PalabraAdivinada(palabraSecreta, letrasCorrectas))
+                {
+                    Console.WriteLine("¡Ganaste! La palabra secreta era: " + palabraSecreta);
+                    juegoTerminado = true;
+                }
+            }
+            else
+            {
+                intentosRestantes--;
+                Console.WriteLine("Letra incorrecta. Intentos restantes: " + intentosRestantes);
+                if (intentosRestantes == 0)
+                {
+                    Console.WriteLine("¡Perdiste! La palabra secreta era: " + palabraSecreta);
+                    juegoTerminado = true;
+                }
+            }
+        }
+    }
+
+    static string SeleccionarPalabraSecreta(string[] palabras)
+    {
+        Random random = new Random();
+        return palabras[random.Next(palabras.Length)];
+    }
+
+    static void MostrarPalabraOculta(char[] letrasCorrectas)
+    {
+        Console.Write("Palabra: ");
+        foreach (char letra in letrasCorrectas)
+        {
+            Console.Write(letra == '\0' ? "_" : letra.ToString());
+            Console.Write(" ");
+        }
+        Console.WriteLine();
+    }
+
+    static bool LetraYaAdivinada(char letra, char[] letrasCorrectas)
+    {
+        return Array.Exists(letrasCorrectas, element => element == letra);
+    }
+
+    static char[] ActualizarLetrasCorrectas(char letra, string palabraSecreta, char[] letrasCorrectas)
+    {
+        for (int i = 0; i < palabraSecreta.Length; i++)
+        {
+            if (palabraSecreta[i] == letra)
+            {
+                letrasCorrectas[i] = letra;
+            }
+        }
+        return letrasCorrectas;
+    }
+
+    static bool PalabraAdivinada(string palabraSecreta, char[] letrasCorrectas)
+    {
+        return palabraSecreta.Equals(new string(letrasCorrectas));
+    }
+}
