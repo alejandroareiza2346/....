@@ -1,0 +1,80 @@
+1. Recorrer una matriz cuadrada NxN de arriba hacia abajo por columnas: 
+
+csharp
+int[,] matriz = ...; // Inicializa tu matriz aquí
+int n = matriz.GetLength(0); 
+
+for (int columna = 0; columna < n; columna++)
+{
+    for (int fila = 0; fila < n; fila++)
+    {
+        int elemento = matriz[fila, columna];
+        // Realiza la operación deseada con el elemento
+    }
+}
+ 
+
+2. Recorrer sus filas una a una: 
+
+csharp
+int[,] matriz = ...; // Inicializa tu matriz aquí
+int n = matriz.GetLength(0); 
+
+for (int fila = 0; fila < n; fila++)
+{
+    for (int columna = 0; columna < n; columna++)
+    {
+        int elemento = matriz[fila, columna];
+        // Realiza la operación deseada con el elemento
+    }
+}
+ 
+
+3. Recorrer la primera columna desde la última posición hasta la primera, luego la diagonal principal y luego la última columna: 
+
+csharp
+int[,] matriz = ...; // Inicializa tu matriz aquí
+int n = matriz.GetLength(0); 
+
+for (int fila = n - 1; fila >= 0; fila--)
+{
+    int elemento = matriz[fila, 0]; // Recorre la última columna hacia arriba
+    // Realiza la operación deseada con el elemento
+} 
+
+for (int i = 0; i < n; i++)
+{
+    int elemento = matriz[i, i]; // Recorre la diagonal principal
+    // Realiza la operación deseada con el elemento
+} 
+
+for (int fila = n - 1; fila >= 0; fila--)
+{
+    int elemento = matriz[fila, n - 1]; // Recorre la última columna hacia arriba
+    // Realiza la operación deseada con el elemento
+}
+ 
+
+4. Recorrer la última columna desde la última posición de la fila hasta la primera, continuando con la diagonal secundaria y subiendo por la primera columna hasta la posición 0.0: 
+
+csharp
+int[,] matriz = ...; // Inicializa tu matriz aquí
+int n = matriz.GetLength(0); 
+
+for (int fila = n - 1; fila >= 0; fila--)
+{
+    int elemento = matriz[fila, n - 1]; // Recorre la última columna hacia arriba
+    // Realiza la operación deseada con el elemento
+} 
+
+for (int i = n - 1; i >= 0; i--)
+{
+    int elemento = matriz[i, n - 1 - i]; // Recorre la diagonal secundaria
+    // Realiza la operación deseada con el elemento
+} 
+
+for (int fila = 0; fila < n; fila++)
+{
+    int elemento = matriz[fila, 0]; // Recorre la primera columna hacia arriba
+    // Realiza la operación deseada con el elemento
+}
