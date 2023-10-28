@@ -1,0 +1,459 @@
+ALEJANDRO AREIZA ALZATE
+
+EJERCICIOS: Estos ejercicios proporcionan una variedad de escenarios de aplicación de 
+bucles en C#, lo que permite a los estudiantes practicar y comprender cómo se utilizan 
+estos bucles en situaciones de programación estructurada sin necesidad de estructuras de 
+datos más complejas.
+Bucle while:
+1. Escribe un programa que imprima números del 1 al 10.
+2. Crea un programa que sume todos los números pares del 1 al 100.
+3. Implementa un juego de adivinanza en el que el usuario tiene que adivinar un 
+número secreto.
+4. Desarrolla un programa que cuente la cantidad de vocales en una cadena.
+5. Crea un programa que calcule la factorial de un número dado.
+6. Implementa un contador de tiempo regresivo que cuente desde 10 hasta 1.
+7. Escribe un programa que encuentre el número más grande en una lista.
+8. Desarrolla un programa que calcule la suma de los dígitos de un número entero.
+9. Crea un programa que imprima una tabla de multiplicar para un número dado.
+10. Implementa un juego de adivinanza de letras en el que el usuario tiene que adivinar 
+una palabra secreta.
+Bucle do – while
+1. Escribe un programa que le pida al usuario que ingrese un número hasta que ingrese 
+un número negativo.
+2. Crea un programa que genere números aleatorios hasta que se genere un número 
+mayor que 90.
+3. Implementa un programa que sume números ingresados por el usuario hasta que 
+ingrese un número cero.
+4. Desarrolla un programa que solicite al usuario una contraseña y siga pidiendo hasta 
+que ingrese la contraseña correcta.
+5. Escribe un programa que le pida al usuario que adivine un número secreto entre 1 
+y 100.
+6. Crea un programa que calcule la suma de los números pares entre 1 y 100.
+7. Implementa un programa que cuente la cantidad de dígitos en un número ingresado 
+por el usuario.
+8. Desarrolla un programa que permita al usuario jugar al piedra-papel-tijeras hasta 
+que decida salir.
+9. Escribe un programa que imprima los números del 1 al 10 en orden inverso.
+10. Crea un programa que solicite al usuario una serie de nombres y los agregue a una 
+lista hasta que ingrese la palabra "fin".
+Bucle for
+1. Cuenta el número de vocales en una cadena ingresada por el usuario
+2. Calcular la suma de los primeros 10 números pares.
+Bucle foreach
+Visual C#
+Msc. Alexandra Guerrero Bocanegra
+4
+1. Imprimir cada carácter de una cadena ingresada por el usuario en una línea 
+separada.
+2. Dada una lista de números enteros, calcula la suma de todos los elementos.
+3. Encuentra y muestra todos los números pares en una lista de números enteros.
+4. Cuenta el número de veces que aparece una letra específica en una cadena 
+ingresada por el usuario.
+5. Calcula el promedio de una lista de calificaciones.
+6. Invierte una cadena ingresada por el usuario.
+7. Imprime todos los nombres de una lista de cadenas.
+8. Ordena una lista de números enteros en orden ascendente.
+9. Encuentra y muestra el elemento máximo y mínimo en una lista de números.
+10. Multiplica todos los elementos de una lista de números enteros
+
+
+
+
+
+
+
+BUCLE WHILE:
+
+Imprimir números del 1 al 10:
+int i = 1;
+while (i <= 10)
+{
+    Console.WriteLine(i);
+    i++;
+}
+
+Sumar números pares del 1 al 100:
+int sum = 0;
+int num = 2;
+while (num <= 100)
+{
+    sum += num;
+    num += 2;
+}
+
+
+Juego de adivinanza de número secreto:
+Random random = new Random();
+int numeroSecreto = random.Next(1, 101);
+int intentos = 0;
+int intentoUsuario;
+
+do
+{
+    Console.Write("Adivina el número secreto (1-100): ");
+    intentoUsuario = Convert.ToInt32(Console.ReadLine());
+    intentos++;
+
+    if (intentoUsuario < numeroSecreto)
+        Console.WriteLine("El número secreto es mayor.");
+    else if (intentoUsuario > numeroSecreto)
+        Console.WriteLine("El número secreto es menor.");
+} while (intentoUsuario != numeroSecreto);
+
+Console.WriteLine($"¡Adivinaste en {intentos} intentos!");
+
+
+Contar la cantidad de vocales en una cadena:
+string cadena = "Ejemplo de cadena";
+int contador = 0;
+int i = 0;
+
+while (i < cadena.Length)
+{
+    char caracter = Char.ToLower(cadena[i]);
+    if (caracter == 'a' || caracter == 'e' || caracter == 'i' || caracter == 'o' || caracter == 'u')
+        contador++;
+    i++;
+}
+
+Console.WriteLine($"La cadena tiene {contador} vocales.");
+
+
+Calcular el factorial de un número dado:
+int numero = 5;
+int factorial = 1;
+int i = 1;
+
+while (i <= numero)
+{
+    factorial *= i;
+    i++;
+}
+Console.WriteLine($"El factorial de {numero} es {factorial}");
+
+
+Contador de tiempo regresivo:
+int segundos = 10;
+while (segundos >= 1)
+{
+    Console.WriteLine(segundos);
+    segundos--;
+}
+Console.WriteLine("Tiempo agotado");
+
+
+Encontrar el número más grande en una lista.
+Suponiendo que tienes una lista de números llamada listaNumeros:
+List<int> listaNumeros = new List<int> { 5, 8, 2, 10, 15, 7 };
+int maximo = listaNumeros[0];
+int i = 1;
+
+while (i < listaNumeros.Count)
+{
+    if (listaNumeros[i] > maximo)
+        maximo = listaNumeros[i];
+    i++;
+}
+Console.WriteLine($"El número más grande es {maximo}");
+
+
+Calcular la suma de los dígitos de un número entero:
+int numero = 12345;
+int suma = 0;
+
+while (numero > 0)
+{
+    suma += numero % 10;
+    numero /= 10;
+}
+
+Console.WriteLine($"La suma de los dígitos es {suma}");
+
+
+
+Imprimir una tabla de multiplicar para un número dado:
+int numero = 7;
+int i = 1;
+
+while (i <= 10)
+{
+    Console.WriteLine($"{numero} x {i} = {numero * i}");
+    i++;
+}
+
+
+Juego de adivinanza de letras (adivinar una palabra secreta):
+string palabraSecreta = "programacion";
+string intentoUsuario;
+bool adivinado = false;
+
+do
+{
+    Console.Write("Adivina la palabra secreta: ");
+    intentoUsuario = Console.ReadLine();
+
+    if (intentoUsuario.ToLower() == palabraSecreta)
+    {
+        adivinado = true;
+        Console.WriteLine("¡Adivinaste la palabra secreta!");
+    }
+    else
+    {
+        Console.WriteLine("Intenta de nuevo.");
+    }
+} while (!adivinado);
+
+
+Bucle do - while:
+
+Pedir al usuario que ingrese números hasta que ingrese un número negativo:
+int numero;
+do
+{
+    Console.Write("Ingresa un número (ingresa un número negativo para salir): ");
+    numero = Convert.ToInt32(Console.ReadLine());
+} while (numero >= 0);
+
+
+Generar números aleatorios hasta que se genere un número mayor que 90:
+Random random = new Random();
+int numeroGenerado;
+do
+{
+    numeroGenerado = random.Next(1, 101);
+    Console.WriteLine(numeroGenerado);
+} while (numeroGenerado <= 90);
+
+
+Sumar números ingresados por el usuario hasta que ingrese un número cero:
+int suma = 0;
+int numero;
+do
+{
+    Console.Write("Ingresa un número (0 para salir): ");
+    numero = Convert.ToInt32(Console.ReadLine());
+    suma += numero;
+} while (numero != 0);
+Console.WriteLine($"La suma es {suma}");
+
+
+Solicitar una contraseña al usuario hasta que ingrese la contraseña correcta:
+string contraseñaCorrecta = "contraseña123";
+string contraseñaIngresada;
+do
+{
+    Console.Write("Ingresa la contraseña: ");
+    contraseñaIngresada = Console.ReadLine();
+} while (contraseñaIngresada != contraseñaCorrecta);
+Console.WriteLine("Contraseña correcta. Acceso concedido.");
+
+
+Pedir al usuario que adivine un número secreto entre 1 y 100:
+Random random = new Random();
+int numeroSecreto = random.Next(1, 101);
+int intentoUsuario;
+do
+{
+    Console.Write("Adivina el número secreto (1-100): ");
+    intentoUsuario = Convert.ToInt32(Console.ReadLine());
+    if (intentoUsuario < numeroSecreto)
+        Console.WriteLine("El número secreto es mayor.");
+    else if (intentoUsuario > numeroSecreto)
+        Console.WriteLine("El número secreto es menor.");
+} while (intentoUsuario != numeroSecreto);
+Console.WriteLine("¡Adivinaste el número secreto!");
+
+6. Calcular la suma de los números pares entre 1 y 100.
+```csharp
+int sumaPares = 0;
+int num = 2;
+do
+{
+    sumaPares += num;
+    num += 2;
+} while (num <= 100);
+
+
+Contar la cantidad de dígitos en un número ingresado por el usuario:
+int numero = 12345;
+int contador = 0;
+do
+{
+    numero = numero / 10;
+    contador++;
+} while (numero > 0);
+
+
+
+Jugar al piedra-papel-tijeras hasta que el usuario decida salir:
+string[] opciones = { "piedra", "papel", "tijeras" };
+Random random = new Random();
+string eleccionUsuario, eleccionComputadora;
+do
+{
+    eleccionComputadora = opciones[random.Next(opciones.Length)];
+    Console.Write("Elige piedra, papel o tijeras (o 'salir' para terminar): ");
+    eleccionUsuario = Console.ReadLine().ToLower();
+
+    if (eleccionUsuario == "salir")
+        break;
+
+    Console.WriteLine($"Computadora elige {eleccionComputadora}");
+    if (eleccionUsuario == eleccionComputadora)
+        Console.WriteLine("Empate");
+    else if ((eleccionUsuario == "piedra" && eleccionComputadora == "tijeras") ||
+             (eleccionUsuario == "papel" && eleccionComputadora == "piedra") ||
+             (eleccionUsuario == "tijeras" && eleccionComputadora == "papel"))
+        Console.WriteLine("Ganaste");
+    else
+        Console.WriteLine("Perdiste");
+} while (true);
+
+
+Imprimir números del 1 al 10 en orden inverso:
+int i = 10;
+do
+{
+    Console.WriteLine(i);
+    i--;
+} while (i >= 1);
+
+
+Solicitar al usuario una serie de nombres y agregarlos a una lista hasta que ingrese la palabra "fin":
+List<string> listaNombres = new List<string>();
+string nombre;
+do
+{
+    Console.Write("Ingresa un nombre (o 'fin' para terminar): ");
+    nombre = Console.ReadLine();
+    if (nombre != "fin")
+        listaNombres.Add(nombre);
+} while (nombre != "fin");
+
+
+Bucle for:
+
+Contar el número de vocales en una cadena ingresada por el usuario:
+string cadena = "Ejemplo de cadena";
+int contador = 0;
+
+for (int i = 0; i < cadena.Length; i++)
+{
+    char caracter = Char.ToLower(cadena[i]);
+    if (caracter == 'a' || caracter == 'e' || caracter == 'i' || caracter == 'o' || caracter == 'u')
+        contador++;
+}
+Console.WriteLine($"La cadena tiene {contador} vocales.");
+
+
+Calcular la suma de los primeros 10 números pares:
+int sumaPares = 0;
+
+for (int i = 2; i <= 20; i += 2)
+{
+    sumaPares += i;
+}
+
+
+Bucle foreach:
+
+Imprimir cada carácter de una cadena ingresada por el usuario en una línea separada:
+string cadena = "Hola";
+foreach (char caracter in cadena)
+{
+    Console.WriteLine(caracter);
+}
+
+
+Calcular la suma de todos los elementos en una lista de números enteros.
+Suponiendo que tienes una lista llamada numeros:
+List<int> numeros = new List<int> { 1, 2, 3, 4, 5 };
+int suma = 0;
+
+foreach (int numero in numeros)
+{
+    suma += numero;
+}
+
+
+Encontrar y mostrar todos los números pares en una lista de números enteros.
+Suponiendo que tienes una lista llamada numeros:
+List<int> numeros = new List<int> { 1, 2, 3, 4, 5 };
+List<int> pares = new List<int>();
+
+foreach (int numero in numeros)
+{
+    if (numero % 2 == 0)
+    {
+        pares.Add(numero);
+    }
+}
+
+
+Contar el número de veces que aparece una letra específica en una cadena ingresada por el usuario:
+string cadena = "ejemplo de cadena";
+char letraBuscada = 'e';
+int contador = 0;
+
+foreach (char caracter in cadena)
+{
+    if (caracter == letraBuscada)
+    {
+        contador++;
+    }
+}
+
+
+Calcular el promedio de una lista de calificaciones.
+Suponiendo que tienes una lista de calificaciones llamada calificaciones:
+List<int> calificaciones = new List<int> { 85, 92, 78, 90, 88 };
+int suma = 0;
+
+foreach (int calificacion in calificaciones)
+{
+    suma += calificacion;
+}
+
+double promedio = (double)suma / calificaciones.Count;
+
+
+Invertir una cadena ingresada por el usuario:
+string cadena = "Hola";
+char[] caracteres = cadena.ToCharArray();
+Array.Reverse(caracteres);
+string cadenaInvertida = new string(caracteres);
+
+
+
+Imprimir todos los nombres de una lista de cadenas.
+Suponiendo que tienes una lista de nombres llamada nombres:
+List<string> nombres = new List<string> { "Juan", "Maria", "Pedro", "Luis" };
+
+foreach (string nombre in nombres)
+{
+    Console.WriteLine(nombre);
+}
+
+
+Ordenar una lista de números enteros en orden ascendente.
+Suponiendo que tienes una lista de números llamada numeros:
+List<int> numeros = new List<int> { 5, 2, 8, 1, 10 };
+numeros.Sort(); // Esto ordenará la lista en orden ascendente.
+
+
+Encontrar y mostrar el elemento máximo y mínimo en una lista de números.
+Suponiendo que tienes una lista de números llamada numeros:
+List<int> numeros = new List<int> { 5, 2, 8, 1, 10 };
+int maximo = numeros.Max();
+int minimo = numeros.Min();
+
+
+Multiplicar todos los elementos de una lista de números enteros.
+Suponiendo que tienes una lista de números llamada numeros:
+List<int> numeros = new List<int> { 2, 3, 4, 5 };
+int producto = 1;
+
+foreach (int numero in numeros)
+{
+    producto *= numero;
+}
